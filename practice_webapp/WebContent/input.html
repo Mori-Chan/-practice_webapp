@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input</title>
+<script type="text/javascript">
+	function check(){
+		let name = document.getElementById("name").value;
+		let blood = "";
+	    for(let i=0; i<document.form1.blood.length;i++){
+	        if(document.form1.blood[i].selected){
+	            blood += document.form1.blood[i].value;
+	        }
+	    }
+		let sex = "";
+		    for(let i=0; i<document.form1.sex.length;i++){
+		        if(document.form1.sex[i].checked){
+		            sex = document.form1.sex[i].value;
+		        }
+		    }
+		let vehicle = "";
+	    for(let i=0; i<document.form1.vehicle.length;i++){
+	        if(document.form1.vehicle[i].checked){
+	            vehicle += document.form1.vehicle[i].value + ",";
+	        }
+	    }
+		let region = "";
+	    for(let i=0; i<document.form1.region.length;i++){
+	        if(document.form1.region[i].selected){
+	            region += document.form1.region[i].value + ",";
+	        }
+	    }
+		let remarks = document.getElementById("remarks").value;
+
+		let a = vehicle.slice( 0, -1 ) ;
+		let b = region.slice( 0, -1 ) ;
+
+		let result = confirm('この内容でよろしいですか？\n' + '\n氏名:' + name + '\n血液型:' + blood + '\n性別:' + sex + '\n旅行に利用した乗り物:' + a + '\n旅行した地方:' + b + '\n備考:' + remarks);
+
+		return result;
+
+		}
+</script>
+</head>
+<body>
+	<form action="view.jsp" method="post" onsubmit="return check();" name="form1">
+		氏名:
+		<input type="text" id="name" name="name">
+		<br>
+		血液型:<select size="1" name="blood">
+			<option>O</option>
+			<option>A</option>
+			<option>B</option>
+			<option>AB</option>
+		</select>
+		<br>
+		性別:
+		<input type="radio" value="男" name="sex">男
+		<input type="radio" value="女" name="sex">女
+		<br>
+		旅行に利用した乗り物:
+		<input type="checkbox" value="飛行機" name="vehicle">飛行機
+		<input type="checkbox" value="新幹線" name="vehicle">新幹線
+		<input type="checkbox" value="特急列車" name="vehicle">特急列車
+		<input type="checkbox" value="寝台列車" name="vehicle">寝台列車
+		<input type="checkbox" value="長距離バス" name="vehicle">長距離バス
+		<input type="checkbox" value="その他" name="vehicle">その他
+		<br>
+		旅行した地方:
+		<select size="8" name="region" multiple>
+			<option>北海道地方</option>
+			<option>東北地方</option>
+			<option>関東地方</option>
+			<option>中部地方</option>
+			<option>近畿地方</option>
+			<option>中国地方</option>
+			<option>四国地方</option>
+			<option>九州地方</option>
+		</select>
+		<br>
+		備考:<textarea id="remarks" name="remarks"></textarea>
+		<br>
+		<input type="submit" value="送信">
+	</form>
+</body>
+</html>

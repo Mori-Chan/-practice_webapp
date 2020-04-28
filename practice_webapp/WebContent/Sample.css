@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+table{
+	border-collapse: collapse;
+}
+
+td{
+	border:solid 1px black;
+
+	padding:15px;
+}
+
+div{
+	border-collapse:collapse;
+}
+
+#table {
+	display:table;
+}
+.row {
+	display:table-row;
+}
+.row>div {
+	display:table-cell;
+
+	padding:15px;
+	border:1px solid;
+}
